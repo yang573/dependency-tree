@@ -1,0 +1,27 @@
+{
+  "name": "dependency-tree",
+  "version": "1.0.0",
+  "description": "Backend for the Dependency Tree webapp.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yang573/dependency-tree.git"
+  },
+  "keywords": [
+    "dependency",
+    "tool"
+  ],
+  "author": "yang573",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yang573/dependency-tree/issues"
+  },
+  "homepage": "https://github.com/yang573/dependency-tree#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "octonode": "^0.9.5"
+  }
+}
