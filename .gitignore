@@ -52,6 +52,7 @@ headers.json
 data.json
 /src/app/backend/server.js
 mock-data.json
+/e2e
 
 # System Files
 .DS_Store

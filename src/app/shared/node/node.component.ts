@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TreeNode } from '../treeNode';
 
 @Component({
   selector: 'app-node',

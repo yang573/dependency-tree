@@ -21,14 +21,14 @@ export class AppService {
     this.router.navigate(['home']);
   }
 
-  onClickSubmit(GitHubUrl: string): Observable<string> {
+  onClickSubmit(gitHubUrl: string): Observable<string> {
     this.router.navigate(['tree']);
-    let params = new HttpParams().set('url', GitHubUrl);
-    return this.http.get<string>(
+    const params = new HttpParams().set('url', gitHubUrl);
+    return this.http.get<JSON>(
       'http://localhost:3000/traverse-repo',
       { headers: {}, params: params }
     ).pipe(
-        tap(() => console.log('response recieved asdfa')),
+        tap(() => console.log(`Response recieved for ${gitHubUrl}`)),
         catchError(this.handleError<any>())
       );
   }
