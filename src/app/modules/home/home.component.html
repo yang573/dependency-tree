@@ -1,0 +1,13 @@
+<div style="text-align:left">
+  <h1>
+    {{ title }}! {{inputString}}
+  </h1>
+</div>
+<p>
+  This is some helper text.
+</p>
+<p>
+  This is some more helper text.
+</p>
+<input type="text" [(ngModel)]="inputString" placeholder="GitHub Repository URL">
+<button type="button" (click)="onClickGo()">Go</button>

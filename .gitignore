@@ -50,6 +50,8 @@ testem.log
 
 headers.json
 data.json
+/src/app/backend/server.js
+mock-data.json
 
 # System Files
 .DS_Store
