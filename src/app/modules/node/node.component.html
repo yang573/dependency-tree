@@ -1,6 +1,6 @@
 <div>
   {{treeNode.value.name}}:
-  {{treeNode.value.url}}
+  <a href="{{treeNode.value.url}}">{{treeNode.value.url}}</a>
   <ul class="childrenNodes">
     <li *ngFor="let nodeComponent of childrenNodes">
       <app-node [treeNode]="nodeComponent.treeNode"></app-node>

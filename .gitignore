@@ -50,7 +50,7 @@ testem.log
 
 headers.json
 data.json
-/src/app/backend/server.js
+/src/app/backend/scratch.js
 mock-data.json
 /e2e
 

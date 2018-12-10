@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef, Input } from '@angular/core';
-import { IGitHubRepo, ITreeNode, TreeNode } from '../treeNode';
+import { IGitHubRepo, ITreeNode, TreeNode } from '../../shared/tree-node';
 
 @Component({
   selector: 'app-node',

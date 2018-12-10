@@ -23,7 +23,6 @@ export class TreeNode<T> implements ITreeNode<T> {
       console.log(`Error: ${node} is not a TreeNode`);
       return false;
     }
-    console.log('maybe');
   }
 }
 

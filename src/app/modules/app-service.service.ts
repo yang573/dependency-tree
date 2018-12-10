@@ -5,7 +5,8 @@ import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs/index';
 import { catchError, tap } from 'rxjs/operators';
 
-import { IGitHubRepo, ITreeNode, TreeNode } from '../shared/treeNode';
+import { IGitHubRepo, ITreeNode, TreeNode } from '../shared/tree-node';
+import { IServerResponse } from '../shared/server-response';
 
 @Injectable({
   providedIn: 'root'
@@ -28,9 +29,7 @@ export class AppService {
   getHomePage(): void {
     this.router.navigate(['home']);
   }
-  getTreePage(data: any): void {
-    this.root = this.buildTree(data);
-    console.log(this.root);
+  getTreePage(): void {
     this.router.navigate(['tree']);
   }
 
@@ -41,9 +40,15 @@ export class AppService {
       'http://localhost:3000/traverse-repo',
       { headers: {}, params: params }
     ).pipe(
-        tap((x) => {
-          console.log(`Response recieved for ${gitHubUrl}`);
-          console.log(x);
+        tap(function(data) {
+          const castData = <IServerResponse> (data as any);
+          if (castData.status !== 200) {
+            console.log('IDK Error');
+            console.log(castData.message);
+          } else {
+            console.log(castData.message);
+            this.root = this.buildTree(castData.message);
+          }
         }),
         catchError(this.handleError<any>())
       );

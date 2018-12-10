@@ -19,8 +19,7 @@ export class HomeComponent implements OnInit {
   onClickGo(): void {
     console.log('route to tree');
     this.appService.onClickSubmit(this.inputString).subscribe(res => {
-      // HACK: There should be a way for the AppService to get the response body.
-      this.appService.getTreePage(res);
+      this.appService.getTreePage();
     });
   }
 
