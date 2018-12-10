@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { TreeNode } from '../treeNode';
+import { Component, OnInit, ElementRef, Input } from '@angular/core';
+import { IGitHubRepo, ITreeNode, TreeNode } from '../treeNode';
 
 @Component({
   selector: 'app-node',
@@ -8,9 +8,20 @@ import { TreeNode } from '../treeNode';
 })
 export class NodeComponent implements OnInit {
 
-  constructor() { }
+  @Input() treeNode: ITreeNode<IGitHubRepo>;
+  childrenNodes: Array<NodeComponent> = [];
+  elementRef: ElementRef;
+
+  constructor() {
+    // this.elementRef = elementRef;
+  }
 
   ngOnInit() {
+    for (const childTreeNode of this.treeNode.children) {
+      const childComponent = new NodeComponent();
+      childComponent.treeNode = childTreeNode;
+      this.childrenNodes.push(childComponent);
+    }
   }
 
 }

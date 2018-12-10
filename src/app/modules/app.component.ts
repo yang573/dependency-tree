@@ -10,7 +10,7 @@ import { AppService } from './app-service.service';
 export class AppComponent implements OnInit {
   title = 'Dependency Tree';
 
-  constructor(private appService: AppService) {};
+  constructor(private appService: AppService) {}
 
   ngOnInit() {
     this.appService.getHomePage();

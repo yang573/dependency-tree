@@ -1,3 +1,9 @@
-<p>
-  node works!
-</p>
+<div>
+  {{treeNode.value.name}}:
+  {{treeNode.value.url}}
+  <ul class="childrenNodes">
+    <li *ngFor="let nodeComponent of childrenNodes">
+      <app-node [treeNode]="nodeComponent.treeNode"></app-node>
+    </li>
+  </ul>
+</div>
