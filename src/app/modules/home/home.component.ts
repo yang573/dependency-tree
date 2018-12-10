@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app-service.service';
+import { IServerResponse } from '../../shared/server-response';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,9 @@ export class HomeComponent implements OnInit {
   onClickGo(): void {
     console.log('route to tree');
     this.appService.onClickSubmit(this.inputString).subscribe(res => {
-      this.appService.getTreePage();
+      // HACK: There should be a way for the AppService to get the response body.
+      const castResponse = <IServerResponse> (res as any);
+      this.appService.getTreePage(castResponse.message);
     });
   }
 

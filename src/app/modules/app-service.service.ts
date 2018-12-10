@@ -29,7 +29,9 @@ export class AppService {
   getHomePage(): void {
     this.router.navigate(['home']);
   }
-  getTreePage(): void {
+  getTreePage(data): void {
+    this.root = this.buildTree(data);
+    console.log(this.root);
     this.router.navigate(['tree']);
   }
 
@@ -46,8 +48,8 @@ export class AppService {
             console.log('IDK Error');
             console.log(castData.message);
           } else {
+            console.log('else');
             console.log(castData.message);
-            this.root = this.buildTree(castData.message);
           }
         }),
         catchError(this.handleError<any>())
@@ -62,7 +64,7 @@ export class AppService {
     };
   }
 
-  private buildTree(data: any): TreeNode<IGitHubRepo> {
+  buildTree(data: any): TreeNode<IGitHubRepo> {
     const root = new TreeNode<IGitHubRepo>();
     root.value = <IGitHubRepo> {name: data.value.name, url: data.value.url};
     for (const child of data.children) {
