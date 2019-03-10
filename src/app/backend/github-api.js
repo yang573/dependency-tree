@@ -1,4 +1,5 @@
 // Packages
+const dotenv = require('dotenv');
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
@@ -15,9 +16,7 @@ const BAD_REQUEST = 400;
 
 // Other Constants
 const GH_API_URL = 'https://api.github.com';
-
-const CLIENT_ID = '2487ad34400c78289657';
-const CLIENT_SECRET = 'be5d2e74be4b876f61bfb9c68e700696b64ee3f8';
+const API_KEY = dotenv.config();
 
 // Language Enum
 const Language = Object.freeze({
@@ -75,6 +74,7 @@ router.get('/traverse-repo*', function(req,res) {
       console.log('buildTree');
       console.log(result);
       console.log(result.children[0]);
+      console.log('Sending back');
       res.send(JSON.stringify({
         status: SUCCESS,
         message: result
@@ -233,6 +233,12 @@ function getDependencies(dependencyName) {
         // 'client_secret': CLIENT_SECRET
       }
     };
+
+    if (!API_KEY.error) {
+      console.log('keys loaded');
+      options.client_id = API_KEY.CLIENT_ID;
+      options.client_secret = API_KEY.CLIENT_SECRET;
+    }
 
     let url = GH_API_URL + '/search/repositories';
     axios(url, options).then(

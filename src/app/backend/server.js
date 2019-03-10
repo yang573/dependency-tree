@@ -1,7 +1,6 @@
 // Packages
 const http = require('http');
 const https = require('https');
-const url = require('URL');
 const path = require('path');
 const express = require('express');
 
