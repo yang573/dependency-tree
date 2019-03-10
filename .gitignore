@@ -33,7 +33,8 @@ headers.json
 data.json
 /src/app/backend/scratch.js
 mock-data.json
-/e2e
+/e2e/*.js
+/e2e/*.map
 
 # System Files
 .DS_Store
